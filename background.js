@@ -48,7 +48,7 @@ function inject(id){
 		var script = document.createElement("script"); \
 		script.setAttribute("id", "你拿得住我吗"); \
 		script.text = \' \
-			vm.info.sfzx = ' + sfzx + ';\
+			vm.info.sfzx = "' + sfzx + '";\
 			vm.info.area = "' + province + '省' + city + '市' + district + '区";\
 			vm.info.address = "' + province + '省' + city + '市' + district + '区";\
 			vm.info.city = "' + city + '市";\
