@@ -1,0 +1,18 @@
+{
+	"name": "Auto Healthreport",
+	"version": "0.0.1",
+	"description": "Auto-complete your daily ZJU health report.",
+	"permissions": ["webNavigation", "tabs", "activeTab", "declarativeContent", "storage", "https://healthreport.zju.edu.cn/"],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+		"32": "images/ZJU.png",
+		"128": "images/ZJU.png"
+		}
+	},
+	"manifest_version": 2
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+      <style>
+        button {
+          height: 30px;
+          width: 150px;
+          outline: 0px;
+          margin: 2px;
+        }
+		input[type=text] {
+			width: 17.5%;
+			margin: 2px;
+		}
+      </style>
+    </head>
+	<body>
+	<center>
+		<h2 id="todayDone">[ERROR]</h2>
+		<p id="msgBoard">[ERROR]</p>
+	
+		<form id="info">
+			<input type="checkbox" id="sfzx">当前在校<br>
+			<input type="text" id="province">省<input type="text" id="city">市<input type="text" id="district">区<br>
+		</form>
+		<button id="saveInfo">保存设置</button>
+		<button id="report">一键打卡</button>
+	</center>
+	<script src="popup.js"></script>
+	</body>
+</html>
