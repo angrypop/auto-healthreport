@@ -17,20 +17,11 @@ chrome.runtime.onInstalled.addListener(function() {
 	chrome.storage.sync.set({'sfzx': false}, function() {});
 });
 
-function sleep(millis){
-    var date = new Date();
-    var curDate = null;
-    do { curDate = new Date(); }
-    while(curDate-date < millis);
-	return true;
-};
-
 function inject(id){
-	chrome.tabs.executeScript(id, {code: 'console.log("HAHA");'});	
-	var province = "广东";
-	var city = "深圳";
-	var district = "南山";
-	var sfzx = "0";
+	var province = "NULL";
+	var city = "NULL";
+	var district = "NULL";
+	var sfzx = "NULL";
 	chrome.storage.sync.get('province', function(data) {
 		province = data.province;
 	});
@@ -44,7 +35,11 @@ function inject(id){
 		if(data.sfzx) sfzx = "1";
 		else sfzx = "0";
 	});
-	var scriptsToExecute = '\
+	setTimeout( function(){
+		// wait till the callbacks of chrome.storage.sync.get are executed
+		if(province == "NULL" || city == "NULL" || district == "NULL" || sfzx == "NULL")
+			alert("您的浏览器无法对存储访问做出正确且即时的应答，请重新尝试打卡。如果问题持续，请卸载本拓展并联系angrypop@protonmail.com。");
+		var scriptsToExecute = '\
 		var script = document.createElement("script"); \
 		script.setAttribute("id", "你拿得住我吗"); \
 		script.text = \' \
@@ -60,11 +55,12 @@ function inject(id){
 		\'; \
 		var parent = document.documentElement; \
 		parent.appendChild(script);\
-	';
-	chrome.tabs.executeScript(id, {code: scriptsToExecute});
-	var t = new Date();
-	var date = (t.getMonth() + 1) + '月' + t.getDate() + '日';
-	chrome.storage.sync.set({'lastDate': date});
+		';
+		chrome.tabs.executeScript(id, {code: scriptsToExecute});
+		var t = new Date();
+		var date = (t.getMonth() + 1) + '月' + t.getDate() + '日';
+		chrome.storage.sync.set({'lastDate': date});
+	}, 1000);
 };
 
 chrome.runtime.onStartup.addListener(function() {
