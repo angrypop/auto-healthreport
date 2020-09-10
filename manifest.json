@@ -1,6 +1,6 @@
 {
 	"name": "Auto Healthreport",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Auto-complete your daily ZJU health report.",
 	"permissions": ["webNavigation", "tabs", "activeTab", "declarativeContent", "storage", "https://healthreport.zju.edu.cn/"],
 	"background": {

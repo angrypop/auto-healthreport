@@ -11,10 +11,6 @@ chrome.runtime.onInstalled.addListener(function() {
 	chrome.storage.sync.set({'lastDate': '0月0日'}, function() {
 		console.log("Default date: 0.0.");
 	});
-	chrome.storage.sync.set({'province': '广东'}, function() {});
-	chrome.storage.sync.set({'city': '深圳'}, function() {});
-	chrome.storage.sync.set({'district': '南山'}, function() {});
-	chrome.storage.sync.set({'sfzx': false}, function() {});
 });
 
 function inject(id){
